@@ -9,6 +9,8 @@ TagManager:
   - lava
   - water
   - slime
+  - firedoor
+  - waterdoor
   layers:
   - Default
   - TransparentFX
