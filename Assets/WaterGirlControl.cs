@@ -5,10 +5,12 @@ using UnityEngine;
 public class WaterHeadControl : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] float jump;
     [SerializeField] float minX;
     [SerializeField] float maxX;
     [SerializeField] GameObject WaterGirlHead;
     [SerializeField] GameObject WaterGirlBody;
+    [SerializeField] GameObject FireBoy;
     Animator HeadAnimator;
     Animator BodyAnimator;
     SpriteRenderer Headsr;
@@ -29,16 +31,12 @@ public class WaterHeadControl : MonoBehaviour
         //jump
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(0f, speed * Time.deltaTime, 0f);
+            transform.Translate(0f, jump * Time.deltaTime, 0f);
             HeadAnimator.SetBool("Jump", true);
             BodyAnimator.SetBool("Jump", true);
             //transform.Translate(0f,speed)
         }
-        else
-        {
-            HeadAnimator.SetBool("Fall", true);
-            
-        }
+        
         if (Input.GetKey(KeyCode.RightArrow))
         {
             HeadAnimator.SetBool("Run", true);
@@ -70,5 +68,29 @@ public class WaterHeadControl : MonoBehaviour
         {
             transform.position = new Vector3(maxX, transform.position.y, 0f);
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+            if (collision.gameObject.CompareTag("ground"))
+            {
+                HeadAnimator.SetBool("Jump", false);
+                BodyAnimator.SetBool("Jump", false);
+            }
+            if (collision.gameObject.CompareTag("lava"))//set both players to start
+            {
+                transform.position = new Vector3(-10.72f, -3.47f, 0f);
+
+                FireBoy.transform.position = new Vector3(-10.54f, -4.44f, 0f);
+            }
+            if (collision.gameObject.CompareTag("waterdoor"))
+            {
+                
+            }
+            if (collision.gameObject.CompareTag("blueGem"))
+            {
+                Destroy(collision.gameObject);
+            }
+       
     }
 }

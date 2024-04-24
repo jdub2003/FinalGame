@@ -11,6 +11,8 @@ TagManager:
   - slime
   - firedoor
   - waterdoor
+  - redGem
+  - blueGem
   layers:
   - Default
   - TransparentFX
