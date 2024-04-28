@@ -5,12 +5,13 @@ using UnityEngine;
 public class WaterHeadControl : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] float jump;
+    [SerializeField] float forceY = 10f;
     [SerializeField] float minX;
     [SerializeField] float maxX;
     [SerializeField] GameObject WaterGirlHead;
     [SerializeField] GameObject WaterGirlBody;
     [SerializeField] GameObject FireBoy;
+    Rigidbody2D rb;
     Animator HeadAnimator;
     Animator BodyAnimator;
     SpriteRenderer Headsr;
@@ -18,6 +19,7 @@ public class WaterHeadControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         HeadAnimator = WaterGirlHead.GetComponent<Animator>();
         BodyAnimator = WaterGirlBody.GetComponent<Animator>();
         Headsr = WaterGirlHead.GetComponent<SpriteRenderer>();
@@ -31,7 +33,7 @@ public class WaterHeadControl : MonoBehaviour
         //jump
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(0f, jump * Time.deltaTime, 0f);
+            rb.AddForce(forceY * Vector2.up);
             HeadAnimator.SetBool("Jump", true);
             BodyAnimator.SetBool("Jump", true);
             //transform.Translate(0f,speed)
@@ -71,26 +73,33 @@ public class WaterHeadControl : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("ground"))
+        {
+            HeadAnimator.SetBool("Jump", false);
+            BodyAnimator.SetBool("Jump", false);
+        }
        
-            if (collision.gameObject.CompareTag("ground"))
-            {
-                HeadAnimator.SetBool("Jump", false);
-                BodyAnimator.SetBool("Jump", false);
-            }
-            if (collision.gameObject.CompareTag("lava"))//set both players to start
-            {
-                transform.position = new Vector3(-10.72f, -3.47f, 0f);
+        if (collision.gameObject.CompareTag("lava"))//set both players to start
+        {
+            transform.position = new Vector3(-10.72f, -3.47f, 0f);
 
-                FireBoy.transform.position = new Vector3(-10.54f, -4.44f, 0f);
-            }
-            if (collision.gameObject.CompareTag("waterdoor"))
-            {
-                
-            }
-            if (collision.gameObject.CompareTag("blueGem"))
-            {
-                Destroy(collision.gameObject);
-            }
-       
+            FireBoy.transform.position = new Vector3(-10.54f, -4.44f, 0f);
+        }
+        if (collision.gameObject.CompareTag("slime"))//set both players to start
+        {
+            transform.position = new Vector3(-10.72f, -3.47f, 0f);
+
+            FireBoy.transform.position = new Vector3(-10.54f, -4.44f, 0f);
+        }
+
+        //if (collision.gameObject.CompareTag("waterdoor"))
+        //display the end game points round over thanks for playing screen 
+        if (collision.gameObject.CompareTag("blueGem"))
+        {
+            Destroy(collision.gameObject);
+        }
+
     }
+
+
 }

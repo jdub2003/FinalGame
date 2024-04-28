@@ -13,6 +13,10 @@ TagManager:
   - waterdoor
   - redGem
   - blueGem
+  - Elevator1
+  - Elevator2
+  - button1
+  - button2
   layers:
   - Default
   - TransparentFX

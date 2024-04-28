@@ -5,12 +5,13 @@ using UnityEngine;
 public class FireBoyControl : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] float jump;
+    [SerializeField] float forceY = 10f;
     [SerializeField] float minX;
     [SerializeField] float maxX;
     [SerializeField] GameObject FireBoyHead;
     [SerializeField] GameObject FireBoyBody;
     [SerializeField] GameObject WaterGirl;
+    Rigidbody2D rb;
     Animator HeadAnimator;
     Animator BodyAnimator;
     SpriteRenderer Headsr;
@@ -19,10 +20,13 @@ public class FireBoyControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HeadAnimator=FireBoyHead.GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        HeadAnimator =FireBoyHead.GetComponent<Animator>();
         BodyAnimator= FireBoyBody.GetComponent<Animator>();
         Headsr= FireBoyHead.GetComponent<SpriteRenderer>();
         Bodysr= FireBoyBody.GetComponent<SpriteRenderer>();
+       
+
     }
 
     // Update is called once per frame
@@ -30,9 +34,9 @@ public class FireBoyControl : MonoBehaviour
     {
             //FireBoy (W,A,D arrows)
             //jump
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
-                transform.Translate(0f, jump * Time.deltaTime, 0f);
+                rb.AddForce(forceY * Vector2.up);
                 HeadAnimator.SetBool("Jump", true);
                 BodyAnimator.SetBool("Jump", true);
                 //transform.Translate(0f,speed)
@@ -83,14 +87,22 @@ public class FireBoyControl : MonoBehaviour
 
             WaterGirl.transform.position = new Vector3(-10.72f,-3.47f,0f);
         }
-        if (collision.gameObject.CompareTag("firedoor"))
+        if (collision.gameObject.CompareTag("slime"))//set both players to start
         {
-            //show end screen and display final points
+            WaterGirl.transform.position = new Vector3(-10.72f, -3.47f, 0f);
+
+            transform.position = new Vector3(-10.54f, -4.44f, 0f);
         }
+        //if (collision.gameObject.CompareTag("firedoor"))
+        
+            //show end screen and display final points
+        
         if (collision.gameObject.CompareTag("redGem"))
         {
             Destroy(collision.gameObject);
         }
+        
+
     }
    
 }
