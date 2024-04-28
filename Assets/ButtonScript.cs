@@ -17,14 +17,13 @@ public class ButtonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        srB1=  B1.GetComponent<SpriteRenderer>();
-        
+        srB1 = B1.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+            
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -57,10 +56,11 @@ public class ButtonScript : MonoBehaviour
         {
             elevator1.transform.position = new Vector3(transform.position.x, elevator1Min, 0f);
         }
-        /*lever2.transform.Translate(0f, -2f*Time.deltaTime, 0f);
+        /*
+         * lever2.transform.Translate(0f, -2f*Time.deltaTime, 0f);
         if (lever2.transform.position.x < lever1Min)
         {
-            lever2.transform.position = new Vector3(transform.position.x, lever2Min, 0f);
+            lever2.transform.position = new Vector3 (transform.position.x, lever2Min, 0f);
         }*/
     }
 }
