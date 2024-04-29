@@ -35,7 +35,7 @@ public class FireBoyControl : MonoBehaviour
     {
             //FireBoy (W,A,D arrows)
             //jump
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 rb.AddForce(forceY * Vector2.up);
                 HeadAnimator.SetBool("Jump", true);

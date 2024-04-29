@@ -17,6 +17,8 @@ TagManager:
   - Elevator2
   - button1
   - button2
+  - fireboy
+  - watergirl
   layers:
   - Default
   - TransparentFX

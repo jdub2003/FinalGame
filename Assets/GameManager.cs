@@ -8,15 +8,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] TMP_Text ScoreFireBoy;
     [SerializeField] TMP_Text ScoreWaterGirl;
+    [SerializeField] GameObject Firedoor;
+    [SerializeField] GameObject Waterdoor; 
     public int ScoreF=0;
     public int ScoreW=0;
-    [SerializeField] GameObject WaterGirl;
-    [SerializeField] GameObject FireBoy;
+    FireDoor firedoor;
+    WaterDoor waterdoor;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         
+        firedoor = Firedoor.GetComponent<FireDoor>();
+        waterdoor = Waterdoor.GetComponent<WaterDoor>();
     }
 
     // Update is called once per frame
@@ -24,10 +29,14 @@ public class GameManager : MonoBehaviour
     {
         ScoreFireBoy.text = ScoreF.ToString();
         ScoreWaterGirl.text = ScoreW.ToString();
-        //if they are at their doors them end the game
-        if(WaterGirl.transform.position.x<=11.93 && WaterGirl.transform.position.x>= 11.4&& WaterGirl.transform.position.y <= 7 && WaterGirl.transform.position.y >= 6.5&& FireBoy.transform.position.x <= 10.14 && FireBoy.transform.position.x >= 9.54 && FireBoy.transform.position.y <= 7 && FireBoy.transform.position.y >= 6.5)
+        //if they are at their doors then end the game
+        if(firedoor.FBAtEndDoor==true && waterdoor.WGAtEndDoor == true)
         {
             canvas.SetActive(true);
+        }
+        else
+        {
+            canvas.SetActive(false);
         }
 
 

@@ -33,7 +33,7 @@ public class WaterHeadControl : MonoBehaviour
     {
         //WaterGirl (Up,Left,Right arrows)
         //jump
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             rb.AddForce(forceY * Vector2.up);
             HeadAnimator.SetBool("Jump", true);
@@ -101,7 +101,7 @@ public class WaterHeadControl : MonoBehaviour
             gm.ScoreW = gm.ScoreW + 1; 
             Destroy(collision.gameObject);
         }
-
+        //add
     }
 
 
