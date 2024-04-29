@@ -16,6 +16,7 @@ public class FireBoyControl : MonoBehaviour
     Animator BodyAnimator;
     SpriteRenderer Headsr;
     SpriteRenderer Bodysr;
+    GameManager gm;
     //bool onGround=true;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class FireBoyControl : MonoBehaviour
         BodyAnimator= FireBoyBody.GetComponent<Animator>();
         Headsr= FireBoyHead.GetComponent<SpriteRenderer>();
         Bodysr= FireBoyBody.GetComponent<SpriteRenderer>();
-       
+        gm = FindAnyObjectByType<GameManager>();
 
     }
 
@@ -99,6 +100,7 @@ public class FireBoyControl : MonoBehaviour
         
         if (collision.gameObject.CompareTag("redGem"))
         {
+            gm.ScoreF = gm.ScoreF + 1; 
             Destroy(collision.gameObject);
         }
         

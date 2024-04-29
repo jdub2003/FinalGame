@@ -16,9 +16,11 @@ public class WaterHeadControl : MonoBehaviour
     Animator BodyAnimator;
     SpriteRenderer Headsr;
     SpriteRenderer Bodysr;
+    GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindAnyObjectByType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         HeadAnimator = WaterGirlHead.GetComponent<Animator>();
         BodyAnimator = WaterGirlBody.GetComponent<Animator>();
@@ -96,6 +98,7 @@ public class WaterHeadControl : MonoBehaviour
         //display the end game points round over thanks for playing screen 
         if (collision.gameObject.CompareTag("blueGem"))
         {
+            gm.ScoreW = gm.ScoreW + 1; 
             Destroy(collision.gameObject);
         }
 
