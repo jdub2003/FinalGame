@@ -12,6 +12,7 @@ public class WaterHeadControl : MonoBehaviour
     [SerializeField] GameObject WaterGirlBody;
     [SerializeField] GameObject FireBoy;
     Rigidbody2D rb;
+    AudioSource audioSource;
     Animator HeadAnimator;
     Animator BodyAnimator;
     SpriteRenderer Headsr;
@@ -22,6 +23,7 @@ public class WaterHeadControl : MonoBehaviour
     {
         gm = FindAnyObjectByType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         HeadAnimator = WaterGirlHead.GetComponent<Animator>();
         BodyAnimator = WaterGirlBody.GetComponent<Animator>();
         Headsr = WaterGirlHead.GetComponent<SpriteRenderer>();
@@ -98,6 +100,7 @@ public class WaterHeadControl : MonoBehaviour
         //display the end game points round over thanks for playing screen 
         if (collision.gameObject.CompareTag("blueGem"))
         {
+            audioSource.Play();
             gm.ScoreW = gm.ScoreW + 1; 
             Destroy(collision.gameObject);
         }

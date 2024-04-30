@@ -13,12 +13,14 @@ public class ButtonScript : MonoBehaviour
     //[SerializeField] float elevator1Max;
     //[SerializeField] float elevator2Min;
     //[SerializeField] float elevator2Max;
-    SpriteRenderer sr;    
+    SpriteRenderer sr;
+    AudioSource audioSource;
     bool elevatorActivated;
     ElevatorControls elevatorControls;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         elevatorControls = elevator1.GetComponent<ElevatorControls>();
         sr = GetComponent<SpriteRenderer>();
        // srB2 = B2.GetComponent<SpriteRenderer>();
@@ -93,6 +95,8 @@ public class ButtonScript : MonoBehaviour
     }*/
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //play elevator sound
+        audioSource.Play();
         //call elevator up
         sr.color = Color.green;
         elevatorControls.ElevatorActive=true;

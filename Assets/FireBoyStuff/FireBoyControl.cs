@@ -12,6 +12,7 @@ public class FireBoyControl : MonoBehaviour
     [SerializeField] GameObject FireBoyBody;
     [SerializeField] GameObject WaterGirl;
     Rigidbody2D rb;
+    AudioSource audioSource;
     Animator HeadAnimator;
     Animator BodyAnimator;
     SpriteRenderer Headsr;
@@ -22,6 +23,7 @@ public class FireBoyControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         HeadAnimator =FireBoyHead.GetComponent<Animator>();
         BodyAnimator= FireBoyBody.GetComponent<Animator>();
         Headsr= FireBoyHead.GetComponent<SpriteRenderer>();
@@ -100,6 +102,7 @@ public class FireBoyControl : MonoBehaviour
         
         if (collision.gameObject.CompareTag("redGem"))
         {
+            audioSource.Play();
             gm.ScoreF = gm.ScoreF + 1; 
             Destroy(collision.gameObject);
         }

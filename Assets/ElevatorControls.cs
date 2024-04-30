@@ -8,10 +8,11 @@ public class ElevatorControls : MonoBehaviour
     [SerializeField] float elevatorMax;
     [SerializeField] float speed;
     public bool ElevatorActive;
+   
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class ElevatorControls : MonoBehaviour
     {
         if (ElevatorActive)
         {
+            
             transform.Translate(speed * Time.deltaTime * Vector3.up);
             if (transform.position.y > elevatorMax)
             {

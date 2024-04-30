@@ -1,10 +1,14 @@
 Sound Credits 
-Delirium by Victor_Natas
-https://freesound.org/people/Victor_Natas/sounds/722639/
+- Delirium by Victor_Natas
+  https://freesound.org/people/Victor_Natas/sounds/722639/
+- 320655__rhodesmas__level-up-01.mp3 by shinephoenix...
+  https://freesound.org/people/shinephoenixstormcrow/sounds/337049/
+- Cartoon_Whistle.wav by Brsjak
+  https://freesound.org/people/Brsjak/sounds/482881/
 
 FireBoy and WaterGirl SpriteSheet
-The spriters Resource
-https://www.spriters-resource.com/browser_games/fireboyandwatergirltheforesttemple/sheet/217382/
+- The spriters Resource
+  https://www.spriters-resource.com/browser_games/fireboyandwatergirltheforesttemple/sheet/217382/
 
 
 
