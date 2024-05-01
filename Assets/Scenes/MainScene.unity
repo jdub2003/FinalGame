@@ -2897,7 +2897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  forceY: 300
+  forceY: 200
   minX: -11.6
   maxX: 11.7
   WaterGirlHead: {fileID: 1994657411}
@@ -5112,7 +5112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  forceY: 300
+  forceY: 200
   minX: -10.8
   maxX: 12.2
   FireBoyHead: {fileID: 322442001}
